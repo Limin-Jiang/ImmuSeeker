@@ -43,18 +43,31 @@ export PATH=/your/directory/HLAdetector:$PATH
 ## Usage
 
 Usage: ./myscript [-SwithB | -SwithF] -i <Parameter1> -v <Parameter2> -er <Parameter3> -c <Parameter4> -o <Parameter5>  -p <Parameter6> [-ex]
+
 Options:
+
   -SwithB  Input alignment BAM file.
+  
   -SwithF  Input FASTQ file.
+  
   -i       Set the input directory and filename. Example: 'data/outfile.bam'.
+  
   -v       Input parameter or file name.
+  
            If using -SwithB, specify the genome version with '-v hg37' or '-v hg38'.
+           
            If using -SwithF, specify FASTQ file(s) with '-i file1,file2' (two files) or '-i file' (one file).
+           
   -o       Set the output directory and filename. Example: 'data/outfile'.
+  
   -ex      Specify whether to output gene expression values(default: false).
+  
   -er      Specify the sequencing error ratio (default: 0.02).
+  
   -c       Specify min number of supported reads (default: 0).
+  
   -p       Specify the probability of three genotypes with '-p (1/4,1/2,1/4)' (default: (1/3,1/3,1/3)).
+  
   --help   Display this help message.
 
 
