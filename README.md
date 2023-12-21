@@ -18,6 +18,7 @@ The Human Leukocyte Antigen (HLA) system plays a pivotal role in immune response
 
 # Dependencies
 Make sure the following programs are in your PATH:
+
 Samtools v1.18
 
 bowtie v1.3.1
@@ -34,12 +35,7 @@ git clone git@github.com:Limin-Jiang/HLAdetector.git
 # Navigate to the project directory
 cd HLAdetector
 export PATH=/your/directory/HLAdetector:$PATH
-
-
-# Dependencies
-
-# Dependencies
-
+```
 
 
 
