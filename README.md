@@ -56,9 +56,15 @@ Options:
   --help   Display this help message.
 ```
 ## Example
-This is a example:
+This is a example for input a bam file:
 ```bash
 ./myscript -SwithB -i data/Example.bam -v hg38 -er 0.02 -c 0 -o results/output -ex
 ```
+
+This is a example for input one or two fq file:
+```bash
+./myscript -SwithF -i file1,file2 -v hg38 -er 0.02 -c 0 -o results/output -ex
+```
+
 You will get three file, including:  output_HLAlist.csv, output_genetype.csv, output.expression.csv
 
