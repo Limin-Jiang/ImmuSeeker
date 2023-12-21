@@ -63,7 +63,7 @@ This is a example for input a bam file:
 
 This is a example for input one or two fq file:
 ```bash
-./myscript -SwithF -i file1,file2 -v hg38 -er 0.02 -c 0 -o results/output -ex
+./myscript -SwithF -i file1.fq,file2.fq -v hg38 -er 0.02 -c 0 -o results/output -ex
 ```
 
 You will get three file, including:  output_HLAlist.csv, output_genetype.csv, output.expression.csv
