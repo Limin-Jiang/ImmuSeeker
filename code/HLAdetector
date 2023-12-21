@@ -1,0 +1,131 @@
+
+#!/bin/bash
+
+#   HLApipeline
+#
+#   Authors:    Limin Jiang (lxj423@med.miami.edu)
+#   Date:       2023-12-20
+#   Version:    0.1.0
+# Default values
+
+#######################################Software#########################################
+
+SwithB=$1
+SwithF=$2
+param_i=$3
+param_o=$4
+param_ex=$5
+param_v=$6
+param_er=$7
+param_c=$8
+param_p=$9
+
+directory=$(dirname "$param_o")
+
+# Check the value of $param_i
+if [ "$swithB" == true ]; then
+	if samtools view -H "$param_i" | grep -qi -e "SN:chr6" -e "SN:Chr6"; then
+	  Chrlag="CHR"
+	else
+	  Chrlag=""
+	fi
+	count=$(samtools view "$param_i" | cut -d$'\t' -f 1 | sort -T "$directory" | uniq -c | wc -l)&&
+	echo "$param_i' $count">>"$param_o.Reads.number.total"
+	if [ "$param_v" == "hg37" ]; then		
+		echo "please make sure the version of genome is hg37...";
+		samtools view -b -h -L  data/"$Chrlag"gencode.v39.annotationhg37.gtf.HLA.bed  "$param_i"  >  "$param_o.bam"
+	else
+		echo "please make sure the version of genome is hg38...";
+		samtools view -b -h -L  data/"$Chrlag"gencode.v39.annotationhg38.gtf.HLA.bed  "$param_i"  >  "$param_o.bam"	
+	fi
+	samtools bam2fq "$param_o.bam" > "$param_o.fq"&&
+	bowtie --sam -n 0 -a data/HLA_unique_NUC  "$param_o.fq"  "$param_o.sam"&&
+	rm "$param_o.bam"
+fi
+
+if [ "$swithF" == true ]; then
+	if echo "$param_i" | grep -q ','; then
+		result=$(echo "$param_i" | tr -d ' ' | tr ',' '\n')
+		f1="$(echo "$result" | awk 'NR==1 {print}')"
+		f2="$(echo "$result" | awk 'NR==2 {print}')"
+		read_count=$(wc -l < "$f1")
+		read_count=$((read_count / 4))
+		echo "$param_i' $read_count">>"$param_o.Reads.number.total"
+		bowtie -n 0 -a data/HLA_unique_NUC  -1 "$f1" -2 "$f2" -S "$param_o.sam"&&
+		echo "User input two FQ files"
+	else
+		read_count=$(wc -l < "$param_i")
+		read_count=$((read_count / 4))
+		echo "$param_i' $read_count">>"$param_o.Reads.number.total"			
+		bowtie --sam -n 0 -a data/HLA_unique_NUC  "$param_i"  "$param_o.sam"&&	
+		echo "User input one FQ file"
+	fi	
+fi
+
+
+
+samtools view -S -bh  "$param_o.sam" >  "$param_o.bam"&&
+rm "$param_o.sam"&&
+samtools view "$param_o.bam" | grep HLA |cut -d$'\t' -f 1,3 > "$param_o.txt"&&
+awk 'NR==FNR {h[$1] = $2; next} {print $1,$2,h[$2]}' data/HLA_name.txt "$param_o.txt" |cut -d$' ' -f 1,3 > "$param_o.temp.txt"&&
+rm "$param_o.txt"&&
+cut -d '*' -f 1 "$param_o.temp.txt" | awk '{print $1 "_" $2}' | sort  -T "$directory"  | uniq -c | awk  '{print $2}' | cut -d '_' -f 1  | sort  -T "$directory"  | uniq -c | awk '$1 == 1 {print $2}' > "$param_o.List.txt"&&
+awk  'NR==FNR{values[$1]; next} $1 in values'  "$param_o.List.txt" "$param_o.temp.txt"> "$param_o.Nuc.txt"&&
+rm "$param_o.List.txt"&&
+/usr/local/bin/Rscript  code/BamTocount_demorun.R "$param_o.Nuc.txt"&&
+/usr/local/bin/Rscript  code/BayesianProbability.R -i "$param_o""_HLAlist.csv" -e "$param_er" -c "$param_c" -p "$param_p"  -x "$param_ex"&&
+
+if [ $param_ex=="true" ]; then
+	if test -e "$param_o""_HLAlist.csv.search"; then  
+		cut -d ',' -f 1 "$param_o""_HLAlist.csv.search" | sed 's/"//g'> "$param_o""_HLAlist.csv.search1"&&
+		file_path="$param_o""_HLAlist.csv.search1"
+		sp=' '
+		#echo $file_path;
+		exec 3< "$file_path"
+		while read -r line <&3; do
+		pattern1=$(echo "$line" | sed 's/\*/\\*/g' )
+		pattern="$(echo "$sp$pattern1")"	
+		count=$(grep "$pattern" "$param_o.temp.txt"  | cut -d ' ' -f 1 | sort -T "$directory" | uniq -c | wc -l)
+		#echo "'$line' $count"
+		echo "'$line' $count">>"$file_path.count"
+		done
+		exec 3<&-
+	else
+		echo "No HLA genes were detected!"
+	fi
+
+	if test -e "$param_o""_HLAlist.csv.gene.search"; then  
+		cut -d ',' -f 1 "$param_o""_HLAlist.csv.gene.search" | sed 's/"//g'> "$param_o""_HLAlist.csv.gene.search1"&&
+		file_path="$param_o""_HLAlist.csv.gene.search1"
+		lag="\*"
+		sp=' '
+		#echo $file_path;
+		exec 3< "$file_path"
+		while read -r line <&3; do
+		pattern="$(echo "$sp$line$lag")"
+		count=$(grep "$pattern" "$param_o.temp.txt"  | cut -d ' ' -f 1 | sort -T "$directory" | uniq -c | wc -l)
+		echo "'$line' $count">>"$file_path.count"
+		done
+		exec 3<&-
+	else
+		echo "No HLA genes were detected!"
+	fi
+
+
+
+	/usr/local/bin/Rscript  code/Call_gene_expression.R -i "$param_o"&&
+	rm "$param_o""_HLAlist.csv.search1.count"&&
+	rm "$param_o""_HLAlist.csv.search1"&&
+	rm "$param_o""_HLAlist.csv.search"&&
+	rm "$param_o""_HLAlist.csv.gene.search1.count"&&
+	rm "$param_o""_HLAlist.csv.gene.search1"&&
+	rm "$param_o""_HLAlist.csv.gene.search"
+	
+	
+fi
+
+rm "$param_o.Reads.number.total"&&
+rm "$param_o.temp.txt"&&
+
+rm "$param_o.Nuc.txt"&&
+rm "$param_o.bam"
