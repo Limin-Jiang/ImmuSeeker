@@ -22,15 +22,7 @@ Samtools v1.18
 
 bowtie v1.3.1
 
-python >=v3.6
-
-R 
-
-data.table
-
-stringr
-
-docopt
+R  >=v3.6 (With packages: data.table, stringr, docopt)
 
 # Dependencies
 To get started with this project, follow these steps:
