@@ -40,7 +40,7 @@ export PATH=/your/directory/HLAdetector:$PATH
 
 
 
-## usage
+## Usage
 
 Usage: ./myscript [-SwithB | -SwithF] -i <Parameter1> -v <Parameter2> -er <Parameter3> -c <Parameter4> -o <Parameter5>  -p <Parameter6> [-ex]
 Options:
