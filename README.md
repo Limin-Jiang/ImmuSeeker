@@ -56,9 +56,9 @@ Options:
   --help   Display this help message.
 ```
 ## Example
-
+This is a example:
 ```bash
 ./myscript -SwithB -i data/Example.bam -v hg38 -er 0.02 -c 0 -o results/output -ex
 ```
-
+You will get three file, including: output.expression.csv, output_HLAlist.csv, output_genetype.csv
 
