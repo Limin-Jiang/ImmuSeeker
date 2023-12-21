@@ -8,9 +8,7 @@ The Human Leukocyte Antigen (HLA) system plays a pivotal role in immune response
 
 - [Installation](#installation)
 - [Usage](#usage)
-- [Configuration](#configuration)
-- [Contributing](#contributing)
-- [License](#license)
+- [Example](#Example)
 - [Acknowledgments](#acknowledgments)
 - [Contact](#contact)
 
@@ -25,7 +23,7 @@ bowtie v1.3.1
 
 R  >=v3.6 (With packages: data.table, stringr, docopt)
 
-###  install
+###  Install
 To get started with this project, follow these steps:
 
 ```bash
@@ -40,6 +38,7 @@ export PATH=/your/directory/HLAdetector:$PATH``
 
 
 ## Usage
+
 ```bash
 Usage: ./myscript [-SwithB | -SwithF] -i <Parameter1> -v <Parameter2> -er <Parameter3> -c <Parameter4> -o <Parameter5>  -p <Parameter6> [-ex]
 Options:
@@ -56,3 +55,10 @@ Options:
   -p       Specify the probability of three genotypes with '-p (1/4,1/2,1/4)' (default: (1/3,1/3,1/3)).  
   --help   Display this help message.
 ```
+## Example
+
+```bash
+./myscript -SwithB -i data/Example.bam -v hg38 -er 0.02 -c 0 -o results/output -ex
+```
+
+
