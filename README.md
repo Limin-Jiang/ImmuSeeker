@@ -62,11 +62,3 @@ This is a example:
 ```
 You will get three file, including:  output_HLAlist.csv, output_genetype.csv, output.expression.csv
 
-output_HLAlist.csv
-
-| HLAname	| Num	| Class	| Genes	| Type| 
-| C	| 407	| Gene	| C	| Number| 
-| C*01	| 1	| Class1	| C| 	Unique| 
-| C*01:02	| 1	| Class2	| C| 	Number| 
-| C*01:02	| 1	| Class2	| C	| Unique| 
-| C*01:02:62	| 1	| Class3	| C	| Number| 
