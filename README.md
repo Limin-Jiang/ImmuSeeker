@@ -28,7 +28,7 @@ To get started with this project, follow these steps:
 
 ```bash
 # Clone the repository
-git clone git@github.com:Limin-Jiang/HLAdetector.git
+wget git@github.com:Limin-Jiang/HLAdetector.git
 
 # Navigate to the project directory
 cd HLAdetector
