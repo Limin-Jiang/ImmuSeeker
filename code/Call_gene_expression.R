@@ -39,16 +39,24 @@ for (ii in 1:nrow(d1_Count)){
   d1_Count$length[ii] = median(d_gene_length_temp$length)
 }
 
+
 d1_Count$RPK = d1_Count$ReadsNum/d1_Count$length
 d1_Count$RPKM = (d1_Count$RPK*10^6)/rep(d_total,nrow(d1_Count))
 d1_Count$TPM = (d1_Count$RPKM*10^6)/(sum(d1_Count$RPKM,na.rm = TRUE))
 
 
-d1_Count$totalNum = d_total*10^6
+d1_Count$totalNum = rep(d_total*10^6,nrow(d1_Count))
 
-d1_Count$Level = "Gene"
-d1_Count$Level[str_count(d1_Count$HLAname, ":") == 1] = "2"
-d1_Count$Level[str_count(d1_Count$HLAname, ":") == 0 & grepl("\\*",d1_Count$HLAname)] = "1"
+d1_Count$Level = rep("Gene",nrow(d1_Count))
+ll_idx = which(str_count(d1_Count$HLAname, ":") == 1)
+if (length(ll_idx) > 0){
+  d1_Count$Level[ll_idx] = rep("2",length(ll_idx))
+}
+ll_idx = which(str_count(d1_Count$HLAname, ":") == 0 & grepl("\\*",d1_Count$HLAname))
+
+if (length(ll_idx) > 0){
+  d1_Count$Level[ll_idx] = rep("1",length(ll_idx))
+}
 d1_Count$length = d1_Count$length * 1000
 
 
@@ -56,7 +64,7 @@ idx = which(d1_Count$Level == "1")
 
 subd1_Count = d1_Count[idx,]
 d1_Count = d1_Count[-idx,]
-d1_Count$Type = "NA"
+d1_Count$Type = rep("NA",nrow(d1_Count))
 
 
 d_homo = fread(paste0(file_ID,"_genetype.csv"),header = TRUE,sep = ",")
@@ -68,8 +76,6 @@ subd1_Count = subd1_Count[,-1]
 d1_Count = rbind(subd1_Count,d1_Count)
 
 d1_Count = d1_Count[order(d1_Count$Level),]
-
-
 
 
 write.csv(d1_Count,paste0(file_ID,".expression.csv"),row.names = FALSE)
