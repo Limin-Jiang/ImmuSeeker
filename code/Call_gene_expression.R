@@ -40,7 +40,7 @@ for (ii in 1:nrow(d1_Count)){
 }
 
 d1_Count$RPK = d1_Count$ReadsNum/d1_Count$length
-d1_Count$RPKM = (d1_Count$RPK*10^6)/d_total
+d1_Count$RPKM = (d1_Count$RPK*10^6)/rep(d_total,nrow(d1_Count))
 d1_Count$TPM = (d1_Count$RPKM*10^6)/(sum(d1_Count$RPKM,na.rm = TRUE))
 
 
