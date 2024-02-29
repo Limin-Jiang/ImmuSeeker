@@ -74,19 +74,19 @@ This is a example for input one or two fq file:
 
 Upon completion of the process, you will receive three files:
 
-output_HLAlist.csv: 
+### output_HLAlist.csv: 
 
 This file provides information on the detected HLA names, the unique reads supported, gene names, and associated levels.
 
-output_genetype.csv: 
+### output_genetype.csv: 
 
 This file contains the inferred zygosity for each gene, determined through Bayesian analysis.
 
-output_expression.csv: 
+### output_expression.csv: 
 
 This file presents details on the detected genes, alleles, and protein expression levels.
 
-output.fq: 
+### output.fq: 
 
 This file includes the reads utilized for HLA detection purposes.
 
