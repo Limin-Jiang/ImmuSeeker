@@ -6,6 +6,7 @@ The Human Leukocyte Antigen (HLA) locus is associated with a variety of inflamma
 
 ![Framework](https://github.com/Limin-Jiang/HLAdetector/blob/main/HLA_Figure1.jpg)
 
+
 ## Table of Contents
 
 - [Installation](#installation)
@@ -30,11 +31,11 @@ To get started with this project, follow these steps:
 
 ```bash
 # Clone the repository
-git clone https://github.com/Limin-Jiang/HLAdetector.git
+git clone https://github.com/Limin-Jiang/HLAseeker.git
 
 # Navigate to the project directory
-cd HLAdetector
-export PATH=/your/directory/HLAdetector:$PATH
+cd HLAseeker
+export PATH=/your/directory/HLAseeker:$PATH
 ```
 
 
@@ -42,7 +43,7 @@ export PATH=/your/directory/HLAdetector:$PATH
 ## Usage
 
 ```bash
-Usage: ./myscript [-SwithB | -SwithF] -i <Parameter1> -v <Parameter2> -er <Parameter3> -c <Parameter4> -o <Parameter5>  -p <Parameter6> [-ex]
+Usage: ./HLAseeker [-SwithB | -SwithF] -i <Parameter1> -v <Parameter2> -er <Parameter3> -c <Parameter4> -o <Parameter5>  -p <Parameter6> [-ex]
 Options:
   -SwithB  Input alignment BAM file.  
   -SwithF  Input FASTQ file.  
@@ -57,16 +58,31 @@ Options:
   -p       Specify the probability of three genotypes with '-p (1/4,1/2,1/4)' (default: (1/3,1/3,1/3)).  
   --help   Display this help message.
 ```
-## Example
+## Use cases
 This is a example for input a bam file:
 ```bash
-./myscript -SwithB -i data/Example.bam -v hg38 -er 0.02 -c 0 -o results/output -ex
+./HLAseeker -SwithB -i data/Example.bam -v hg38 -er 0.02 -c 0 -o results/output -ex
 ```
 
 This is a example for input one or two fq file:
 ```bash
-./myscript -SwithF -i file1.fq,file2.fq -v hg38 -er 0.02 -c 0 -o results/output -ex
+./HLAseeker -SwithF -i file1.fq,file2.fq -v hg38 -er 0.02 -c 0 -o results/output -ex
 ```
 
-You will get three file, including:  output_HLAlist.csv, output_genetype.csv, output.expression.csv
 
+## Output file descriptions
+
+You will get three file, including:  
+
+1) output_HLAlist.csv
+
+2) output_genetype.csv
+
+3) output.expression.csv
+
+
+## Contact
+
+Any Comments or questions, Please contact:
+Yan Guo, Ph.D, yanguo1978@gmail.com
+Limin Jiang, Ph.D, lxj423@miami.com
