@@ -1,4 +1,4 @@
-# HLAseeker
+# HLA_autoimmune
 This software aims to detect the HLA gene based on RNA-seq.
 
 ## Description
@@ -31,11 +31,11 @@ To get started with this project, follow these steps:
 
 ```bash
 # Clone the repository
-git clone https://github.com/Limin-Jiang/HLAseeker.git
+git clone https://github.com/Limin-Jiang/HLA_autoimmune.git
 
 # Navigate to the project directory
-cd HLAseeker
-export PATH=/your/directory/HLAseeker:$PATH
+cd HLA_autoimmune
+export PATH=/your/directory/HLA_autoimmune:$PATH
 ```
 
 
@@ -43,7 +43,7 @@ export PATH=/your/directory/HLAseeker:$PATH
 ## Usage
 
 ```bash
-Usage: ./HLAseeker [-SwithB | -SwithF] -i <Parameter1> -v <Parameter2> -er <Parameter3> -c <Parameter4> -o <Parameter5>  -p <Parameter6> [-ex]
+Usage: ./HLA_autoimmune [-SwithB | -SwithF] -i <Parameter1> -v <Parameter2> -er <Parameter3> -c <Parameter4> -o <Parameter5>  -p <Parameter6> [-ex]
 Options:
   -SwithB  Input alignment BAM file.  
   -SwithF  Input FASTQ file.  
@@ -61,12 +61,12 @@ Options:
 ## Use cases
 This is a example for input a bam file:
 ```bash
-./HLAseeker -SwithB -i data/Example.bam -v hg38 -er 0.02 -c 0 -o results/output -ex
+./HLA_autoimmune -SwithB -i data/Example.bam -v hg38 -er 0.02 -c 0 -o results/output -ex
 ```
 
 This is a example for input one or two fq file:
 ```bash
-./HLAseeker -SwithF -i file1.fq,file2.fq -v hg38 -er 0.02 -c 0 -o results/output -ex
+./HLA_autoimmune -SwithF -i file1.fq,file2.fq -v hg38 -er 0.02 -c 0 -o results/output -ex
 ```
 
 
