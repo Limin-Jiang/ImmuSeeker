@@ -6,6 +6,7 @@ The Human Leukocyte Antigen (HLA) locus is associated with a variety of inflamma
 
 ![Framework](https://github.com/Limin-Jiang/HLAdetector/blob/main/HLA_Figure1.jpg)
 
+(A). HLA general description. Of the four HLA levels, our method can detect HLA up to the resolution of HLA protein sequence. (B). A dendrogram representing all HLA-A sequences, demonstrating the number and hierarchical nature of HLA sequences. (C). A graphical representation of our HLA alignment strategy and detection strategies. 
 
 ## Table of Contents
 
