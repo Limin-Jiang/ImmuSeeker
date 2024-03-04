@@ -56,7 +56,8 @@ Options:
   -ex      Specify whether to output gene expression values(default: false).  
   -er      Specify the sequencing error ratio (default: 0.02).  
   -c       Specify min number of supported reads (default: 0).  
-  -p       Specify the probability of three genotypes with '-p (1/4,1/2,1/4)' (default: (1/3,1/3,1/3)).  
+  -p       Specify the probability of three genotypes with '-p (1/4,1/2,1/4)' (default: (1/3,1/3,1/3)).
+  -n       Max mismatches in seed (default: -n 0). 
   --help   Display this help message.
 ```
 ## Use cases
