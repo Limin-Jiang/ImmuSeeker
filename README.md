@@ -4,7 +4,7 @@ This project encompasses all the code utilized in the paper titled "Enhanced HLA
 ## Paper Description
 The Human Leukocyte Antigen (HLA) locus is associated with a variety of inflammatory conditions. However, traditional HLA detection relies on genotyping with known limitations, prompting our efforts to refine RNA-sequencing-based HLA detection to better define the role of gene expression and disease. We propose an optimized strategy for accurate HLA gene and allele and protein sequence identification, assessment of HLA gene allele-specific, and protein-sequence-specific expression, HLA diversity, Bayesian-based zygosity inference, and contrastive neural network-based HLA haplotype group comparison. 
 
-![Framework](https://github.com/Limin-Jiang/HLAdetector/blob/main/HLA_Figure1.jpg)
+![Framework](https://github.com/Limin-Jiang/HLA_autoimmune/blob/main/Figure.JPG)
 
 (A). HLA general description. Of the four HLA levels, our method can detect HLA up to the resolution of HLA protein sequence. (B). A dendrogram representing all HLA-A sequences, demonstrating the number and hierarchical nature of HLA sequences. (C). A graphical representation of our HLA alignment strategy and detection strategies. 
 
@@ -67,6 +67,12 @@ This is a example for input a bam file:
 ```
 
 This is a example for input one or two fq file:
+```bash
+./HLA_autoimmune -SwithF -i file.fq -v hg38 -er 0.02 -c 0 -o results/output -ex -n 0
+```
+
+or
+
 ```bash
 ./HLA_autoimmune -SwithF -i file1.fq,file2.fq -v hg38 -er 0.02 -c 0 -o results/output -ex -n 0
 ```
