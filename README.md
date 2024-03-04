@@ -63,12 +63,12 @@ Options:
 ## Use cases
 This is a example for input a bam file:
 ```bash
-./HLA_autoimmune -SwithB -i data/Example.bam -v hg38 -er 0.02 -c 0 -o results/output -ex
+./HLA_autoimmune -SwithB -i data/Example.bam -v hg38 -er 0.02 -c 0 -o results/output -ex -n 0
 ```
 
 This is a example for input one or two fq file:
 ```bash
-./HLA_autoimmune -SwithF -i file1.fq,file2.fq -v hg38 -er 0.02 -c 0 -o results/output -ex
+./HLA_autoimmune -SwithF -i file1.fq,file2.fq -v hg38 -er 0.02 -c 0 -o results/output -ex -n 0
 ```
 
 
