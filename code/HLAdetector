@@ -4,21 +4,17 @@
 #   HLApipeline
 #
 #   Authors:    Limin Jiang (lxj423@med.miami.edu)
-#   Date:       2023-12-20
-#   Version:    0.1.0
+#   Date:       2024-3-1
+#   Version:    0.2.0
 # Default values
 
 #######################################Software#########################################
 
-SwithB=$1
-SwithF=$2
-param_i=$3
-param_o=$4
-param_ex=$5
-param_v=$6
-param_er=$7
-param_c=$8
-param_p=$9
+
+#for param in "${parameters[@]}"; do
+#    echo "$param"
+#done
+
 
 directory=$(dirname "$param_o")
 
@@ -39,7 +35,7 @@ if [ "$swithB" == true ]; then
 		samtools view -b -h -L  data/"$Chrlag"gencode.v39.annotationhg38.gtf.HLA.bed  "$param_i"  >  "$param_o.bam"	
 	fi
 	samtools bam2fq "$param_o.bam" > "$param_o.fq"&&
-	bowtie --sam -n 0 -a data/HLA_unique_NUC  "$param_o.fq"  "$param_o.sam"&&
+	bowtie --sam -n "$param_n" -a data/hla_nuc  "$param_o.fq"  "$param_o.sam"&&
 	rm "$param_o.bam"
 fi
 
@@ -51,13 +47,13 @@ if [ "$swithF" == true ]; then
 		read_count=$(wc -l < "$f1")
 		read_count=$((read_count / 4))
 		echo "$param_i' $read_count">>"$param_o.Reads.number.total"
-		bowtie -n 0 -a data/HLA_unique_NUC  -1 "$f1" -2 "$f2" -S "$param_o.sam"&&
+		bowtie -n "$param_n" -a data/hla_nuc  -1 "$f1" -2 "$f2" -S "$param_o.sam"&&
 		echo "User input two FQ files"
 	else
 		read_count=$(wc -l < "$param_i")
 		read_count=$((read_count / 4))
 		echo "$param_i' $read_count">>"$param_o.Reads.number.total"			
-		bowtie --sam -n 0 -a data/HLA_unique_NUC  "$param_i"  "$param_o.sam"&&	
+		bowtie --sam -n "$param_n" -a data/hla_nuc  "$param_i"  "$param_o.sam"&&	
 		echo "User input one FQ file"
 	fi	
 fi
@@ -80,12 +76,15 @@ if [ $param_ex=="true" ]; then
 		cut -d ',' -f 1 "$param_o""_HLAlist.csv.search" | sed 's/"//g'> "$param_o""_HLAlist.csv.search1"&&
 		file_path="$param_o""_HLAlist.csv.search1"
 		sp=' '
+		sp1=':'
+		sp2='$'
 		#echo $file_path;
 		exec 3< "$file_path"
 		while read -r line <&3; do
 		pattern1=$(echo "$line" | sed 's/\*/\\*/g' )
-		pattern="$(echo "$sp$pattern1")"	
-		count=$(grep "$pattern" "$param_o.temp.txt"  | cut -d ' ' -f 1 | sort -T "$directory" | uniq -c | wc -l)
+		pattern="$(echo "$sp$pattern1$sp1")"
+		pattern2="$(echo "$sp$pattern1$sp2")"		
+		count=$(grep -e "$pattern" -e "$pattern2" "$param_o.temp.txt"  | cut -d ' ' -f 1 | sort -T "$directory" | uniq -c | wc -l)
 		#echo "'$line' $count"
 		echo "'$line' $count">>"$file_path.count"
 		done
@@ -126,6 +125,5 @@ fi
 
 rm "$param_o.Reads.number.total"&&
 rm "$param_o.temp.txt"&&
-
 rm "$param_o.Nuc.txt"&&
 rm "$param_o.bam"
