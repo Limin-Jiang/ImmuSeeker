@@ -17,6 +17,7 @@ A graphical representation of our HLA alignment strategy and detection strategie
 - [Installation](#installation)
 - [Usage](#usage)
 - [Example](#Example)
+- [Additional information](#Additional information)- 
 - [Contact](#contact)
 
 ## Installation
@@ -101,6 +102,10 @@ This file presents details on the detected genes, alleles, and protein expressio
 
 This file includes the reads utilized for HLA detection purposes.
 
+
+## Additional information
+
+This project also encompasses an analysis of HLA diversity alongside a Contrastive Neural Network-based comparison of HLA haplotype groups. The code implementations and sample datasets are stored within the directory labeled "Example_Analysis_CL_and_diversity.
 
 
 
