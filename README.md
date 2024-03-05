@@ -17,7 +17,7 @@ A graphical representation of our HLA alignment strategy and detection strategie
 - [Installation](#installation)
 - [Usage](#usage)
 - [Example](#Example)
-- [Example](#Example)
+- [Additional information](#Additional information)
 - [Contact](#contact)
 
 ## Installation
