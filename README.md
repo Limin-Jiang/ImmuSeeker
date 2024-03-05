@@ -29,7 +29,9 @@ Samtools v1.18
 
 bowtie v1.3.1
 
-R  >=v3.6 (With packages: data.table, stringr, docopt)
+R  >=v3.6 (With packages: data.table, stringr, docopt, tidyverse, phyloseq, rstatix, ggprism, vegan, ggplot2)
+
+Python >=v3.10 (With packages: pyreadr, numpy, keras, pandas, tensorflow, random, os )
 
 ###  Install
 To get started with this project, follow these steps:
