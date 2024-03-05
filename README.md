@@ -6,14 +6,15 @@ The Human Leukocyte Antigen (HLA) locus is associated with a variety of inflamma
 
 ![Framework](https://github.com/Limin-Jiang/HLA_autoimmune/blob/main/Figure.JPG)
 
-(A). HLA general description. Of the four HLA levels, our method can detect HLA up to the resolution of HLA protein sequence. (B). A dendrogram representing all HLA-A sequences, demonstrating the number and hierarchical nature of HLA sequences. (C). A graphical representation of our HLA alignment strategy and detection strategies. 
+HLA general description. Of the four HLA levels, our method can detect HLA up to the resolution of HLA protein sequence. 
+A dendrogram representing all HLA-A sequences, demonstrating the number and hierarchical nature of HLA sequences. 
+A graphical representation of our HLA alignment strategy and detection strategies. 
 
 ## Table of Contents
 
 - [Installation](#installation)
 - [Usage](#usage)
 - [Example](#Example)
-- [Acknowledgments](#acknowledgments)
 - [Contact](#contact)
 
 ## Installation
@@ -60,7 +61,7 @@ Options:
   -n       Max mismatches in seed (default: -n 0). 
   --help   Display this help message.
 ```
-## Use cases
+## Example
 This is a example for input a bam file:
 ```bash
 ./HLA_autoimmune -SwithB -i data/Example.bam -v hg38 -er 0.02 -c 0 -o results/output -ex -n 0
@@ -101,7 +102,7 @@ This file includes the reads utilized for HLA detection purposes.
 
 
 
-## Contact
+## contact
 
 Any Comments or questions, Please contact:
 
