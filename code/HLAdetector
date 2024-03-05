@@ -68,8 +68,8 @@ rm "$param_o.txt"&&
 cut -d '*' -f 1 "$param_o.temp.txt" | awk '{print $1 "_" $2}' | sort  -T "$directory"  | uniq -c | awk  '{print $2}' | cut -d '_' -f 1  | sort  -T "$directory"  | uniq -c | awk '$1 == 1 {print $2}' > "$param_o.List.txt"&&
 awk  'NR==FNR{values[$1]; next} $1 in values'  "$param_o.List.txt" "$param_o.temp.txt"> "$param_o.Nuc.txt"&&
 rm "$param_o.List.txt"&&
-/usr/local/bin/Rscript  code/BamTocount_demorun.R "$param_o.Nuc.txt"&&
-/usr/local/bin/Rscript  code/BayesianProbability.R -i "$param_o""_HLAlist.csv" -e "$param_er" -c "$param_c" -p "$param_p"  -x "$param_ex"&&
+Rscript  code/BamTocount_demorun.R "$param_o.Nuc.txt"&&
+Rscript  code/BayesianProbability.R -i "$param_o""_HLAlist.csv" -e "$param_er" -c "$param_c" -p "$param_p"  -x "$param_ex"&&
 
 if [ $param_ex=="true" ]; then
 	if test -e "$param_o""_HLAlist.csv.search"; then  
@@ -112,7 +112,7 @@ if [ $param_ex=="true" ]; then
 
 
 
-	/usr/local/bin/Rscript  code/Call_gene_expression.R -i "$param_o"&&
+	Rscript  code/Call_gene_expression.R -i "$param_o"&&
 	rm "$param_o""_HLAlist.csv.search1.count"&&
 	rm "$param_o""_HLAlist.csv.search1"&&
 	rm "$param_o""_HLAlist.csv.search"&&
