@@ -111,7 +111,7 @@ This project also encompasses an analysis of HLA diversity alongside a Contrasti
 
 
 
-## contact
+## Contact
 
 Any Comments or questions, Please contact:
 
