@@ -25,7 +25,7 @@ A graphical representation of our HLA alignment strategy and detection strategie
 ###  Dependencies
 Make sure the following programs are in your PATH:
 
-Samtools v1.18
+Samtools v1.18 (Copyright (C) 2008-2024 Genome Research Ltd.)
 
 bowtie v1.3.1
 
