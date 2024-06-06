@@ -20,20 +20,26 @@ A graphical representation of our HLA alignment strategy and detection strategie
 - [Additional Information](#Additional)
 - [Contact](#contact)
 
-## Installation
+## Installation ImmuSeeker
 
-###  Dependencies
+### Via docker 
+
+#### Example
+cd your/directory/ (that directory includes your input file)
+docker run -v .\data:/ImmuSeeker_data -it immuseeker -HLA -SwithB -i Example.bam -v hg38 -er 0.02 -c 0 -o output -ex -n 0 -dvr -pt
+
+
+### Via conda 
+
+### Manual installation
+
+####  Prerequisites
 Make sure the following programs are in your PATH:
-
 Samtools v1.18 (Copyright (C) 2008-2024 Genome Research Ltd.)
-
 bowtie v1.3.1
+R  >=v3.6 ( With packages: data.table, tidyverse, ggraph, igraph, docopt, phyloseq, stringr)
 
-R  >=v3.6 ( With packages: data.table, stringr, docopt, tidyverse, phyloseq, rstatix, ggprism, vegan, ggplot2 )
-
-Python >=v3.10 ( With packages: pyreadr, numpy, keras, pandas, tensorflow, random, os )
-
-###  Install
+####  Install
 To get started with this project, follow these steps:
 
 ```bash
@@ -50,20 +56,26 @@ export PATH=/your/directory/HLA_autoimmune:$PATH
 ## Usage
 
 ```bash
-Usage: ./HLA_autoimmune [-SwithB | -SwithF] -i <Parameter1> -v <Parameter2> -er <Parameter3> -c <Parameter4> -o <Parameter5>  -p <Parameter6> [-ex]
+Usage: ImmuSeeker [-HLA | -KIR] [-SwithB | -SwithF] -i <Parameter1> -v <Parameter2> -c <Parameter3> -n <Parameter4>  -p <Parameter5> -p1 <Parameter6> -o <Parameter7>  -er <Parameter8>  [-ex] [-pt] [-dvr] [-dve]
 Options:
-  -SwithB  Input alignment BAM file.  
-  -SwithF  Input FASTQ file.  
-  -i       Set the input directory and filename. Example: 'data/outfile.bam'.  
-  -v       Input parameter or file name.  
-           If using -SwithB, specify the genome version with '-v hg37' or '-v hg38'.           
-           If using -SwithF, specify FASTQ file(s) with '-i file1,file2' (two files) or '-i file' (one file).           
-  -o       Set the output directory and filename. Example: 'data/outfile'.  
-  -ex      Specify whether to output gene expression values(default: false).  
-  -er      Specify the sequencing error ratio (default: 0.02).  
-  -c       Specify min number of supported reads (default: 0).  
-  -p       Specify the probability of three genotypes with '-p (1/4,1/2,1/4)' (default: (1/3,1/3,1/3)).
-  -n       Max mismatches in seed (default: -n 0). 
+  -HLA     Invoke the HLA calling process.
+  -KIR     Invoke the KIR calling process.
+  -SwithB  Input alignment BAM file.
+  -SwithF  Input FASTQ file.
+  -i       Set the input directory and filename. Example: 'your/input/directory/inputfile.bam'.
+  -v       Input parameter or file name.
+           If using -SwithB, specify the genome version with '-v hg37' or '-v hg38'.
+           If using -SwithF, specify FASTQ file(s) with '-i file1,file2' (two files) or '-i file' (one file).
+  -c       Specify min number of supported unique reads (default: 5).
+  -n       Max mismatches in seed (default: -n 0).
+  -p       Set a noninformative flat prior to allow the data to have a strong influence on the posterior distribution. (default: -n (1/3,1/3,1/3)).
+  -p1      Set the probability of observing an allele in genotype (default: 1/2).
+  -o       Set the output directory and filename. Example: 'your/output/directory/outfile'.
+  -ex      Specify whether to output gene expression values(default: false).
+  -pt      Specify whether to output phylogenetic tree for HLAs(default: false).
+  -dvr     Specify whether to output diversity anlysis result based on the number of unique reads.(default: false).
+  -dve     Specify whether to output diversity anlysis result based on gene expression(default: false).
+  -er      Specify the sequencing error ratio (default: 0.02).
   --help   Display this help message.
 ```
 ## Example
