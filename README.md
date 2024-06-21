@@ -35,7 +35,7 @@ sudo docker pull lxj423/immuseeker:latest
 
 
 ####  Prerequisites
-Make sure the following programs are in your PATH:
+
 - Samtools (Copyright (C) 2008-2024 Genome Research Ltd.)
 ```bash
 apt -y install samtools
@@ -55,7 +55,6 @@ Rscript -e "install.packages('permute', repos='https://cloud.r-project.org/')"
 Rscript -e "install.packages('https://github.com/vegandevs/vegan/archive/refs/tags/v2.6-4.tar.gz', repos = NULL, type = 'source')"
 Rscript -e "if (!requireNamespace('BiocManager', quietly = TRUE)) install.packages('BiocManager'); BiocManager::install('phyloseq')"
 ```
-
 
 ####  Install
 To get started with this project, follow these steps:
