@@ -1,4 +1,4 @@
-# HLA_autoimmune
+# ImmuSeeker
 This project encompasses all the code utilized in the paper titled "Enhanced HLA Detection and Immune Functionality Analyses Reveal Insights from Autoimmune Diseases and COVID-19 Cohorts."
 
 ## Paper Description
@@ -24,20 +24,44 @@ A graphical representation of our HLA alignment strategy and detection strategie
 
 ### Via docker 
 
+```bash
+sudo docker pull lxj423/immuseeker:latest
+```
+
+
 #### Example
-cd your/directory/ (that directory includes your input file)
-docker run -v .\data:/ImmuSeeker_data -it immuseeker -HLA -SwithB -i Example.bam -v hg38 -er 0.02 -c 0 -o output -ex -n 0 -dvr -pt
 
+cd your/directory/ (that directory includes your data folder/file)
 
-### Via conda 
+if the Example.bam is in the folder'./data', please run the following command. 
+docker run -v ./data:/ImmuSeeker_data -it immuseeker -HLA -SwithB -i Example.bam -v hg38 -er 0.02 -c 0 -o output -ex -n 0 -dvr -pt
+
 
 ### Manual installation
 
+
 ####  Prerequisites
 Make sure the following programs are in your PATH:
-Samtools v1.18 (Copyright (C) 2008-2024 Genome Research Ltd.)
-bowtie v1.3.1
-R  >=v3.6 ( With packages: data.table, tidyverse, ggraph, igraph, docopt, phyloseq, stringr)
+- Samtools (Copyright (C) 2008-2024 Genome Research Ltd.)
+```bash
+apt -y install samtools
+```
+
+- bowtie
+
+```bash
+apt -y install bowtie
+```
+
+- R  >=v3.6 ( With packages: data.table, tidyverse, ggraph, igraph, docopt, phyloseq, stringr)
+```bash
+apt -y install r-base
+Rscript -e "install.packages(c('data.table', 'dplyr', 'ggraph', 'igraph', 'docopt','stringr'))"
+Rscript -e "install.packages('permute', repos='https://cloud.r-project.org/')"
+Rscript -e "install.packages('https://github.com/vegandevs/vegan/archive/refs/tags/v2.6-4.tar.gz', repos = NULL, type = 'source')"
+Rscript -e "if (!requireNamespace('BiocManager', quietly = TRUE)) install.packages('BiocManager'); BiocManager::install('phyloseq')"
+```
+
 
 ####  Install
 To get started with this project, follow these steps:
@@ -62,7 +86,7 @@ Options:
   -KIR     Invoke the KIR calling process.
   -SwithB  Input alignment BAM file.
   -SwithF  Input FASTQ file.
-  -i       Set the input directory and filename. Example: 'your/input/directory/inputfile.bam'.
+  -i       Set the input directory and filename. Example: 'inputfile.bam'.
   -v       Input parameter or file name.
            If using -SwithB, specify the genome version with '-v hg37' or '-v hg38'.
            If using -SwithF, specify FASTQ file(s) with '-i file1,file2' (two files) or '-i file' (one file).
@@ -70,7 +94,7 @@ Options:
   -n       Max mismatches in seed (default: -n 0).
   -p       Set a noninformative flat prior to allow the data to have a strong influence on the posterior distribution. (default: -n (1/3,1/3,1/3)).
   -p1      Set the probability of observing an allele in genotype (default: 1/2).
-  -o       Set the output directory and filename. Example: 'your/output/directory/outfile'.
+  -o       Set the output directory and filename. Example: 'outfileName'.
   -ex      Specify whether to output gene expression values(default: false).
   -pt      Specify whether to output phylogenetic tree for HLAs(default: false).
   -dvr     Specify whether to output diversity anlysis result based on the number of unique reads.(default: false).
