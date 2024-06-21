@@ -29,12 +29,7 @@ sudo docker pull lxj423/immuseeker:latest
 ```
 
 
-#### Example
-```bash
-cd your/directory/ (that directory includes your data folder/file)
-if the Example.bam is in the folder'./data', please run the following command. 
-docker run -v ./data:/ImmuSeeker_data -it immuseeker -HLA -SwithB -i Example.bam -v hg38 -er 0.02 -c 0 -o output -ex -n 0 -dvr -pt
-```
+
 
 ### Manual installation
 
@@ -102,6 +97,15 @@ Options:
   --help   Display this help message.
 ```
 ## Example
+
+#### Example
+```bash
+cd your/directory/ (that directory includes your data folder/file)
+if the Example.bam is in the folder'./data', please run the following command. 
+docker run -v ./data:/ImmuSeeker_data -it immuseeker -HLA -SwithB -i Example.bam -v hg38 -er 0.02 -c 0 -o output -ex -n 0 -dvr -pt
+```
+
+
 This is a example for input a bam file:
 ```bash
 ./HLA_autoimmune -SwithB -i data/Example.bam -v hg38 -er 0.02 -c 0 -o results/output -ex -n 0
