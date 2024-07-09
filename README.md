@@ -93,7 +93,7 @@ Options:
 ```
 ## Example
 
-#### Example
+#### Example based on docker
 
 ```bash
 cd your/directory/ (that directory includes your data folder/file)
@@ -102,13 +102,13 @@ sudo docker run -v ./data:/ImmuSeeker_data -it immuseeker -HLA -SwithB -i 'Examp
 
 ```
 
-
-This is a example for input a bam file:
+#### Example in local
+This is an example for input a bam file to detect HLA:
 ```bash
 ./ImmuSeeker -HLA -SwithB -i 'Example.bam' -o Example_output -v hg38
 ```
 
-This is a example for input one or two fq file:
+This is an example for input one or two fq file to detect HLA:
 ```bash
 ./ImmuSeeker -HLA -SwithF -i Example.fq -er 0.02 -c 0 -o output -ex true -dv dve -pt true
 ```
@@ -119,6 +119,12 @@ or
 ./ImmuSeeker -SwithF -i file1.fq,file2.fq -er 0.02 -c 0 -o output -ex true -dv dve -pt true
 ```
 
+This is an example for detecting KIR:
+```bash
+./ImmuSeeker -KIR -SwithB -i 'Example.bam' -o Example_output
+./ImmuSeeker -KIR -SwithF -i Example.fq -o Example_output
+```
+
 
 ## Output File Descriptions
 
@@ -126,7 +132,7 @@ Upon completion of the process, you will receive multiple files:
 
 ### output_list.csv: 
 
-This file provides information on the detected HLA names, the unique reads supported, gene names, and associated levels.
+This file provides information on the detected HLA names, the unique reads supporting them, gene names, and associated levels.
 
 ### output_genetype.csv: 
 
@@ -138,7 +144,7 @@ This file presents details on the detected genes, alleles, and protein expressio
 
 ### output_diversity_ex.csv/output_diversity_re.csv: 
 
-This file presents details on the diversity analysis results based on gene expression or supported reads number.
+These files present details on the diversity analysis results based on gene expression or the number of supporting reads.
 
 ### output_evolution_graphs.pdf: 
 
@@ -148,11 +154,9 @@ This file presents the phylogenetic tree for detected HLAs.
 
 This file includes the reads utilized for HLA detection purposes.
 
-
 ## Additional information
 
-This project also encompasses an analysis of HLA diversity alongside a Contrastive Neural Network-based comparison of HLA haplotype groups. The code implementations and sample datasets are stored within the directory labeled "Example_Analysis_CL_and_diversity.
-
+This project also encompasses an analysis of HLA diversity alongside a Contrastive Neural Network-based comparison of HLA haplotype groups. The code implementations and sample datasets are stored within the directory labeled "Example_Analysis_CL_and_diversity."
 
 
 ## Contact
