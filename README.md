@@ -68,7 +68,7 @@ Options:
 	-KIR     Invoke the KIR calling process.
 	-SwithB  Input alignment BAM file.
 	-SwithF  Input FASTQ file.
-	-i       Set the input directory and filename. Example: 'your/input/directory/inputfile.bam'.  If using -SwithF, specify FASTQ file(s) with '-i file1,file2' (two 			files) or '-i file' (one file).
+	-i       Set the input directory and filename. Example: 'your/input/directory/inputfile.bam'.  If using -SwithF, specify FASTQ file(s) with '-i file1,file2' (two files) or '-i file' (one file).
     Optional:
 	-v       Input parameter or file name. 
 	   If using -SwithB, specify the genome version with '-v hg37' or '-v hg38'. 	  
