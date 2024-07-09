@@ -71,7 +71,7 @@ while [[ "$#" -gt 0 ]]; do
       swithF="true"
       ;;
     -i)
-      param_i="/ImmuSeeker_data/$2" #"/ImmuSeeker_data/$2"
+      param_i="$2" #"/ImmuSeeker_data/$2"
       shift
       ;;
     -v)
@@ -79,7 +79,7 @@ while [[ "$#" -gt 0 ]]; do
       shift
       ;;
     -o)
-      param_o="/ImmuSeeker_data/$2" #"/ImmuSeeker_data/$2"
+      param_o="$2" #"/ImmuSeeker_data/$2"
       shift
       ;;
     -ex)
