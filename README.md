@@ -41,7 +41,7 @@ apt -y install bowtie
 - R  >=v3.6 ( With packages: data.table, dplyr, ggraph, igraph, docopt, phyloseq, stringr)
 ```bash
 apt -y install r-base
-Rscript -e "install.packages(c('data.table', 'dplyr', 'ggraph', 'igraph', 'docopt','stringr'))"
+Rscript -e "install.packages(c('data.table', 'dplyr', 'ggraph', 'igraph', 'docopt','stringr'), repos='https://cran.r-project.org')"
 Rscript -e "install.packages('permute', repos='https://cloud.r-project.org/')"
 Rscript -e "install.packages('https://github.com/vegandevs/vegan/archive/refs/tags/v2.6-4.tar.gz', repos = NULL, type = 'source')"
 Rscript -e "if (!requireNamespace('BiocManager', quietly = TRUE)) install.packages('BiocManager'); BiocManager::install('phyloseq')"
