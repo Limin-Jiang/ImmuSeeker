@@ -6,11 +6,6 @@ Immune gene family signatures, such as Human Leukocyte Antigen (HLA) and Killer-
 
 ![Framework](https://github.com/Limin-Jiang/HLA_autoimmune/blob/main/Figure.JPG)
 
-HLA/KIR general description. Of the four HLA/KIR levels, our method can detect HLA/KIR up to the resolution of HLA/KIR protein sequence. 
-
-A dendrogram representing all HLA-A sequences, demonstrating the number and hierarchical nature of HLA sequences. 
-
-A graphical representation of our HLA/KIR alignment strategy and detection strategies. 
 
 ## Table of Contents
 
