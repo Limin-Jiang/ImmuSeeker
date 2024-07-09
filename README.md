@@ -57,11 +57,11 @@ To get started with this project, follow these steps:
 
 ```bash
 # Clone the repository
-git clone https://github.com/Limin-Jiang/HLA_autoimmune.git
+git clone https://github.com/Limin-Jiang/ImmuSeeker.git
 
 # Navigate to the project directory
-cd HLA_autoimmune
-export PATH=/your/directory/HLA_autoimmune:$PATH
+cd ImmuSeeker
+export PATH=/your/directory/ImmuSeeker:$PATH
 ```
 
 
@@ -94,35 +94,37 @@ Options:
 ## Example
 
 #### Example
+
 ```bash
 cd your/directory/ (that directory includes your data folder/file)
 if the Example.bam is in the folder'./data', please run the following command. 
-docker run -v ./data:/ImmuSeeker_data -it immuseeker -HLA -SwithB -i Example.bam -v hg38 -er 0.02 -c 0 -o output -ex -n 0 -dvr -pt
+sudo docker run -v ./data:/ImmuSeeker_data -it immuseeker -HLA -SwithB -i 'Example.bam' -o Example_output -v hg38 -c 0 -n 0  -p '(1/3,1/3,1/3)' -p1 0.5 -er 0.02 -ex false -pt false -dv dvr -nr HLAn
+
 ```
 
 
 This is a example for input a bam file:
 ```bash
-./HLA_autoimmune -SwithB -i data/Example.bam -v hg38 -er 0.02 -c 0 -o results/output -ex -n 0
+./ImmuSeeker -HLA -SwithB -i 'Example.bam' -o Example_output -v hg38
 ```
 
 This is a example for input one or two fq file:
 ```bash
-./HLA_autoimmune -SwithF -i file.fq -v hg38 -er 0.02 -c 0 -o results/output -ex -n 0
+./ImmuSeeker -HLA -SwithF -i Example.fq -er 0.02 -c 0 -o output -ex true -dv dve -pt true
 ```
 
 or
 
 ```bash
-./HLA_autoimmune -SwithF -i file1.fq,file2.fq -v hg38 -er 0.02 -c 0 -o results/output -ex -n 0
+./ImmuSeeker -SwithF -i file1.fq,file2.fq -er 0.02 -c 0 -o output -ex true -dv dve -pt true
 ```
 
 
 ## Output File Descriptions
 
-Upon completion of the process, you will receive three files:
+Upon completion of the process, you will receive multiple files:
 
-### output_HLAlist.csv: 
+### output_list.csv: 
 
 This file provides information on the detected HLA names, the unique reads supported, gene names, and associated levels.
 
@@ -133,6 +135,14 @@ This file contains the inferred zygosity for each gene, determined through Bayes
 ### output_expression.csv: 
 
 This file presents details on the detected genes, alleles, and protein expression levels.
+
+### output_diversity_ex.csv/output_diversity_re.csv: 
+
+This file presents details on the diversity analysis results based on gene expression or supported reads number.
+
+### output_evolution_graphs.pdf: 
+
+This file presents the phylogenetic tree for detected HLAs.
 
 ### output.fq: 
 
