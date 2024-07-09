@@ -90,9 +90,9 @@ Options:
 
 #### Example based on docker
 
-```bash
 cd your/directory/ (that directory includes your data folder/file)
 if the Example.bam is in the folder'./data', please run the following command. 
+```bash
 sudo docker run -v ./data:/ImmuSeeker_data -it immuseeker -HLA -SwithB -i 'Example.bam' -o Example_output -v hg38 -c 0 -n 0  -p '(1/3,1/3,1/3)' -p1 0.5 -er 0.02 -ex false -pt false -dv dvr -nr HLAn
 
 ```
