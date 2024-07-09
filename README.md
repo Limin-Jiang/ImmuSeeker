@@ -17,7 +17,7 @@ Immune gene family signatures, such as Human Leukocyte Antigen (HLA) and Killer-
 
 ## Installation ImmuSeeker
 
-### Via docker 
+### Via docker (Recommended)
 
 ```bash
 sudo docker pull lxj423/immuseeker:latest
