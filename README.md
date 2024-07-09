@@ -1,16 +1,16 @@
 # ImmuSeeker
-This project encompasses all the code utilized in the paper titled "Enhanced HLA Detection and Immune Functionality Analyses Reveal Insights from Autoimmune Diseases and COVID-19 Cohorts."
+This project encompasses all the code utilized in the paper titled "Deep mining of immune-related gene family signatures through lineage reconstruction ."
 
 ## Paper Description
-The Human Leukocyte Antigen (HLA) locus is associated with a variety of inflammatory conditions. However, traditional HLA detection relies on genotyping with known limitations, prompting our efforts to refine RNA-sequencing-based HLA detection to better define the role of gene expression and disease. We propose an optimized strategy for accurate HLA gene and allele and protein sequence identification, assessment of HLA gene allele-specific, and protein-sequence-specific expression, HLA diversity, Bayesian-based zygosity inference, and contrastive neural network-based HLA haplotype group comparison. 
+Immune gene family signatures, such as Human Leukocyte Antigen (HLA) and Killer-cell Immunoglobulin-like Receptor (KIR), can be extracted from sequencing data. Previous methods offer limited scope, functionality, and preservation. By examining the phylogenetic structures of HLA and KIR, we developed ImmuSeeker for accurate HLA/KIR gene and allele and protein sequence identification, assessment of HLA/KIR gene allele-specific, and protein-sequence-specific expression, diversity, Bayesian-based zygosity inference, and contrastive neural network-based HLA/KIR haplotype group comparison. 
 
 ![Framework](https://github.com/Limin-Jiang/HLA_autoimmune/blob/main/Figure.JPG)
 
-HLA general description. Of the four HLA levels, our method can detect HLA up to the resolution of HLA protein sequence. 
+HLA/KIR general description. Of the four HLA/KIR levels, our method can detect HLA/KIR up to the resolution of HLA/KIR protein sequence. 
 
 A dendrogram representing all HLA-A sequences, demonstrating the number and hierarchical nature of HLA sequences. 
 
-A graphical representation of our HLA alignment strategy and detection strategies. 
+A graphical representation of our HLA/KIR alignment strategy and detection strategies. 
 
 ## Table of Contents
 
@@ -28,11 +28,7 @@ A graphical representation of our HLA alignment strategy and detection strategie
 sudo docker pull lxj423/immuseeker:latest
 ```
 
-
-
-
 ### Manual installation
-
 
 ####  Prerequisites
 
@@ -47,7 +43,7 @@ apt -y install samtools
 apt -y install bowtie
 ```
 
-- R  >=v3.6 ( With packages: data.table, tidyverse, ggraph, igraph, docopt, phyloseq, stringr)
+- R  >=v3.6 ( With packages: data.table, dplyr, ggraph, igraph, docopt, phyloseq, stringr)
 ```bash
 apt -y install r-base
 Rscript -e "install.packages(c('data.table', 'dplyr', 'ggraph', 'igraph', 'docopt','stringr'))"
@@ -73,27 +69,27 @@ export PATH=/your/directory/HLA_autoimmune:$PATH
 ## Usage
 
 ```bash
-Usage: ImmuSeeker [-HLA | -KIR] [-SwithB | -SwithF] -i <Parameter1> -v <Parameter2> -c <Parameter3> -n <Parameter4>  -p <Parameter5> -p1 <Parameter6> -o <Parameter7>  -er <Parameter8>  [-ex] [-pt] [-dvr] [-dve]
+Usage: ImmuSeeker [-HLA | -KIR] [-SwithB | -SwithF] -i <Parameter1> -v <Parameter2> -c <Parameter3> -n <Parameter4>  -p <Parameter5> -p1 <Parameter6> -o <Parameter7>  -er <Parameter8> -ex <Parameter9> -pt <Parameter10> -dv <Parameter11> -nr <Parameter12>
 Options:
-  -HLA     Invoke the HLA calling process.
-  -KIR     Invoke the KIR calling process.
-  -SwithB  Input alignment BAM file.
-  -SwithF  Input FASTQ file.
-  -i       Set the input directory and filename. Example: 'inputfile.bam'.
-  -v       Input parameter or file name.
-           If using -SwithB, specify the genome version with '-v hg37' or '-v hg38'.
-           If using -SwithF, specify FASTQ file(s) with '-i file1,file2' (two files) or '-i file' (one file).
-  -c       Specify min number of supported unique reads (default: 5).
-  -n       Max mismatches in seed (default: -n 0).
-  -p       Set a noninformative flat prior to allow the data to have a strong influence on the posterior distribution. (default: -n (1/3,1/3,1/3)).
-  -p1      Set the probability of observing an allele in genotype (default: 1/2).
-  -o       Set the output directory and filename. Example: 'outfileName'.
-  -ex      Specify whether to output gene expression values(default: false).
-  -pt      Specify whether to output phylogenetic tree for HLAs(default: false).
-  -dvr     Specify whether to output diversity anlysis result based on the number of unique reads.(default: false).
-  -dve     Specify whether to output diversity anlysis result based on gene expression(default: false).
-  -er      Specify the sequencing error ratio (default: 0.02).
-  --help   Display this help message.
+	-HLA     Invoke the HLA calling process.
+	-KIR     Invoke the KIR calling process.
+	-SwithB  Input alignment BAM file.
+	-SwithF  Input FASTQ file.
+	-i       Set the input directory and filename. Example: 'your/input/directory/inputfile.bam'.
+	-v       Input parameter or file name. 
+	   If using -SwithB, specify the genome version with '-v hg37' or '-v hg38'. 
+	   If using -SwithF, specify FASTQ file(s) with '-i file1,file2' (two files) or '-i file' (one file).
+	-c       Specify min number of supported unique reads (default: 5).
+	-n       Max mismatches in seed (default: 0).
+	-p       Set a noninformative flat prior to allow the data to have a strong influence on the posterior distribution. (default: -p '(1/3,1/3,1/3)').
+	-p1      Set the probability of observing an allele in genotype (default: 1/2).
+	-o       Set the output directory and filename. Example: 'your/output/directory/outfile'.
+	-ex      Specify whether to output gene expression values(default: -ex false).
+	-pt      Specify whether to output phylogenetic tree for HLAs (default: false).
+	-dv      Specify whether to output diversity analysis results based on the number of unique reads ('dvr') or gene expression ('dve'). (default:  false).
+	-nr      Specify the type of reads to account for when calculating gene expression. Choose between HLA reads ('HLAn') or total reads ('Totaln'). Calculating using total reads requires more time. (default: 'HLAn').
+	-er      Specify the sequencing error ratio (default: 0.02).
+	--help   Display this help message.
 ```
 ## Example
 
