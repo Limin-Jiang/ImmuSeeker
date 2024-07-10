@@ -92,14 +92,14 @@ cd your/directory/ (that directory includes your data folder/file)
 
 if the Example.bam is in the folder'./data', please run the following command. 
 ```bash
-sudo docker run -v ./data:/ImmuSeeker_data -it immuseeker -HLA -SwithB -i 'Example.bam' -o Example_output -v hg38 -c 0 -n 0  -p '(1/3,1/3,1/3)' -p1 0.5 -er 0.02 -ex false -pt false -dv dvr -nr HLAn
+sudo docker run -v ./data:/ImmuSeeker_data -it immuseeker -HLA -SwithB -i Example.bam -o Example_output -v hg38 -c 0 -n 0  -p '(1/3,1/3,1/3)' -p1 0.5 -er 0.02 -ex false -pt false -dv dvr -nr HLAn
 
 ```
 
 #### Example in local
 This is an example for input a bam file to detect HLA:
 ```bash
-ImmuSeeker -HLA -SwithB -i 'Example.bam' -o Example_output -v hg38
+ImmuSeeker -HLA -SwithB -i Example.bam -o Example_output -v hg38
 ```
 
 This is an example for input one or two fq file to detect HLA:
@@ -115,7 +115,7 @@ ImmuSeeker -SwithF -i file1.fq,file2.fq -er 0.02 -c 0 -o output -ex true -dv dve
 
 This is an example for detecting KIR:
 ```bash
-ImmuSeeker -KIR -SwithB -i 'Example.bam' -o Example_output
+ImmuSeeker -KIR -SwithB -i Example.bam -o Example_output
 ImmuSeeker -KIR -SwithF -i Example.fq -o Example_output
 ```
 
