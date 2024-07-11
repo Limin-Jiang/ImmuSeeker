@@ -20,7 +20,7 @@ Immune gene family signatures, such as Human Leukocyte Antigen (HLA) and Killer-
 ### Via docker (Recommended)
 
 ```bash
-sudo docker pull lxj423/immuseeker:latest
+docker pull lxj423/immuseeker:latest
 ```
 
 ### Manual installation
