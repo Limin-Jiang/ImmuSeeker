@@ -57,11 +57,10 @@ fi
 
 if [[ "$swithF" == "true" ]]; then
 	if echo "$param_i" | grep -q ','; then
-	
-		if [["$param_ex" == "true"]]; then
-			result=$(echo "$param_i" | tr -d ' ' | tr ',' '\n')
-			f1="$(echo "$result" | awk 'NR==1 {print}')"&&
-			f2="$(echo "$result" | awk 'NR==2 {print}')"&&
+		result=$(echo "$param_i" | tr -d ' ' | tr ',' '\n')
+		f1="$(echo "$result" | awk 'NR==1 {print}')"&&
+		f2="$(echo "$result" | awk 'NR==2 {print}')"&&
+		if [["$param_ex" == "true"]]; then			
 			read_count=$(wc -l < "$f1")&&
 			read_count=$((read_count / 4))&&
 			echo "$param_i' $read_count">>"$param_o.Reads.number.total"
