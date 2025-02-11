@@ -86,7 +86,7 @@ if (file.exists(file_path)){
   
   
   d1 = data_all[,c(1,6,3)]
-  d1$V3 = as.numeric(d1$V3)
+  d1$V3 = as.numeric(as.character(d1$V3))
   fwrite(d1,"./data/KIR-length.txt",append = FALSE, quote = "auto", sep="\t",row.names = FALSE, col.names = FALSE)
   
   #colnames(summary_df) = c("Sequence","Alleles")
