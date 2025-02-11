@@ -2,7 +2,7 @@
 This project encompasses all the code utilized in the paper titled "Deep mining of immune-related gene family signatures through lineage reconstruction"
 
 ## Paper Description
-Immune gene family signatures, such as Human Leukocyte Antigen (HLA) and Killer-cell Immunoglobulin-like Receptor (KIR), can be extracted from sequencing data. Previous methods offer limited scope, functionality, and preservation. By examining the phylogenetic structures of HLA and KIR, we developed ImmuSeeker for accurate HLA/KIR gene and allele and protein sequence identification, assessment of HLA/KIR gene allele-specific, and protein-sequence-specific expression, diversity, Bayesian-based zygosity inference, and contrastive neural network-based HLA/KIR haplotype group comparison. 
+Immune gene family signatures, such as HLA and Killer-cell Immunoglobulin-like Receptor (KIR), can be extracted from sequencing data. Previous methods offer limited scope, functionality, and preservation. By examining the phylogenetic structures of HLA and KIR, we developed ImmuSeeker for accurate HLA/KIR gene and allele and protein sequence identification, assessment of HLA/KIR gene allele-specific, and protein-sequence-specific expression, diversity, Bayesian-based zygosity inference, and contrastive neural network-based HLA/KIR haplotype group comparison. 
 
 ![Framework](https://github.com/Limin-Jiang/HLA_autoimmune/blob/main/Figure.JPG)
 
