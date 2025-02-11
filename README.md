@@ -87,6 +87,15 @@ Options:
 ```
 ## Example
 
+#### Example for updating to the latest IMGT-HLA/KIR version.
+
+```bash
+ImmuSeeker -HLA -Update
+ImmuSeeker -KIR -Update
+```
+
+
+
 #### Example based on docker
 
 cd your/directory/ (that directory includes your data folder/file)
