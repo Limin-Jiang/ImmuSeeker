@@ -69,10 +69,10 @@ Options:
 	-SwithB  Input alignment BAM file.
 	-SwithF  Input FASTQ file.
 	-Update  Update to latest IMGT-HLA/KIR version.
-	-i       Set the input directory and filename. Example: 'your/input/directory/inputfile.bam'.  If using -SwithF, specify FASTQ file(s) with '-i file1,file2' (two files) or '-i file' (one file).
+	-i       Set the input directory and filename. Example: 'your/input/directory/inputfile.bam'.
+		 If using -SwithF, specify FASTQ file(s) with '-i file1,file2' (two files) or '-i file' (one file).
     Optional:
-	-v       Input parameter or file name. 
-	   If using -SwithB, specify the genome version with '-v hg37' or '-v hg38'. 	  
+	-v       If using -SwithB, specify the genome version with '-v hg37' or '-v hg38'. 	  
 	-c       Specify min number of supported unique reads (default: 5).
 	-n       Max mismatches in seed (default: 0).
 	-p       Set a noninformative flat prior to allow the data to have a strong influence on the posterior distribution. (default: -p '(1/3,1/3,1/3)').
