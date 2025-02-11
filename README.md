@@ -41,7 +41,7 @@ apt -y install bowtie
 - R  >=v3.6 ( With packages: data.table, dplyr, ggraph, igraph, docopt, phyloseq, stringr)
 ```bash
 apt -y install r-base
-Rscript -e "install.packages(c('data.table', 'dplyr', 'ggraph', 'igraph', 'docopt','stringr','phyloseq'), repos='https://cran.r-project.org')"
+Rscript -e "install.packages(c('data.table', 'dplyr', 'ggraph', 'igraph', 'docopt','stringr','Biostrings','phyloseq'), repos='https://cran.r-project.org')"
 ```
 
 ####  Install
@@ -61,13 +61,14 @@ export PATH=/your/directory/ImmuSeeker:$PATH
 ## Usage
 
 ```bash
-Usage: ImmuSeeker [-HLA | -KIR] [-SwithB | -SwithF] -i <Parameter1> -v <Parameter2> -c <Parameter3> -n <Parameter4>  -p <Parameter5> -p1 <Parameter6> -o <Parameter7>  -er <Parameter8> -ex <Parameter9> -pt <Parameter10> -dv <Parameter11> -nr <Parameter12>
+Usage: ImmuSeeker [-HLA | -KIR] [-SwithB | -SwithF | -Update] -i <Parameter1> -v <Parameter2> -c <Parameter3> -n <Parameter4>  -p <Parameter5> -p1 <Parameter6> -o <Parameter7>  -er <Parameter8> -ex <Parameter9> -pt <Parameter10> -dv <Parameter11> -nr <Parameter12>
 Options:
     Required:
 	-HLA     Invoke the HLA calling process.
 	-KIR     Invoke the KIR calling process.
 	-SwithB  Input alignment BAM file.
 	-SwithF  Input FASTQ file.
+	-Update  Update to latest IMGT-HLA/KIR version.
 	-i       Set the input directory and filename. Example: 'your/input/directory/inputfile.bam'.  If using -SwithF, specify FASTQ file(s) with '-i file1,file2' (two files) or '-i file' (one file).
     Optional:
 	-v       Input parameter or file name. 
