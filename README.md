@@ -90,8 +90,8 @@ Options:
 #### Example for updating to the latest IMGT-HLA/KIR version.
 
 ```bash
-ImmuSeeker -HLA -Update
-ImmuSeeker -KIR -Update
+./ImmuSeeker -HLA -Update
+./ImmuSeeker -KIR -Update
 ```
 
 
@@ -109,24 +109,24 @@ sudo docker run -v ./data:/ImmuSeeker_data -it immuseeker -HLA -SwithB -i Exampl
 #### Example in local
 This is an example for input a bam file to detect HLA:
 ```bash
-ImmuSeeker -HLA -SwithB -i Example.bam -o Example_output -v hg38
+./ImmuSeeker -HLA -SwithB -i Example.bam -o Example_output -v hg38
 ```
 
 This is an example for input one or two fq file to detect HLA:
 ```bash
-ImmuSeeker -HLA -SwithF -i Example.fq -er 0.02 -c 0 -o output -ex true -dv dve -pt true
+./ImmuSeeker -HLA -SwithF -i Example.fq -er 0.02 -c 0 -o output -ex true -dv dve -pt true
 ```
 
 or
 
 ```bash
-ImmuSeeker -SwithF -i file1.fq,file2.fq -er 0.02 -c 0 -o output -ex true -dv dve -pt true
+./ImmuSeeker -SwithF -i file1.fq,file2.fq -er 0.02 -c 0 -o output -ex true -dv dve -pt true
 ```
 
 This is an example for detecting KIR:
 ```bash
-ImmuSeeker -KIR -SwithB -i Example.bam -o Example_output
-ImmuSeeker -KIR -SwithF -i Example.fq -o Example_output
+./ImmuSeeker -KIR -SwithB -i Example.bam -o Example_output
+./ImmuSeeker -KIR -SwithF -i Example.fq -o Example_output
 ```
 
 
