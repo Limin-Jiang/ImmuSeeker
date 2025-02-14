@@ -95,7 +95,7 @@ cd /your/data/folder/ (that directory includes your data folder/file)
 sudo docker run -v /your/data/folder:/ImmuSeeker_data -it immuseeker -KIR -Update
 sudo docker run -v /your/data/folder:/ImmuSeeker_data -it immuseeker -HLA -Update
 ```
-c
+The most recent HLA/KIR reference files will be stored in /your/data/folder for future use.
 
 ##### Next, ensure that your BAM or FASTQ files are stored in /your/data/folder. For example, if Example.bam is located in /your/data/folder, execute the following command:
 ```bash
