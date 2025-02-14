@@ -74,7 +74,7 @@ Options:
     Optional:
 	-v       If using -SwithB, specify the genome version with '-v hg37' or '-v hg38'. 	  
 	-c       Specify min number of supported unique reads (default: 5).
-	-n       Max mismatches in seed (default: 0).
+	-n       Max mismatches in alignment (default: 0).
 	-p       Set a noninformative flat prior to allow the data to have a strong influence on the posterior distribution. (default: -p '(1/3,1/3,1/3)').
 	-p1      Set the probability of observing an allele in genotype (default: 1/2).
 	-o       Set the output directory and filename. Example: 'your/output/directory/outfile'.
@@ -87,32 +87,38 @@ Options:
 ```
 ## Example
 
-#### Example for updating to the latest IMGT-HLA/KIR version.
+#### Example based on docker
 
+cd /your/data/folder/ (that directory includes your data folder/file)
+##### Example for updating to the latest IMGT-HLA/KIR version.
+```bash
+sudo docker run -v /your/data/folder:/ImmuSeeker_data -it immuseeker -KIR -Update
+sudo docker run -v /your/data/folder:/ImmuSeeker_data -it immuseeker -HLA -Update
+```
+c
+
+##### Next, ensure that your BAM or FASTQ files are stored in /your/data/folder. For example, if Example.bam is located in /your/data/folder, execute the following command:
+```bash
+sudo docker run -v /your/data/folder:/ImmuSeeker_data -it immuseeker -HLA -SwithB -i Example.bam -o Example_output -v hg38 -c 0 -n 0  -p '(1/3,1/3,1/3)' -p1 0.5 -er 0.02 -ex false -pt false -dv dvr -nr HLAn
+```
+
+
+
+#### Example in local
+
+##### Example for updating to the latest IMGT-HLA/KIR version.
 ```bash
 ./ImmuSeeker -HLA -Update
 ./ImmuSeeker -KIR -Update
 ```
+The latest HLA/KIR reference files will be stored in /ImmuSeeker/data, replacing the previous reference files for future use.
 
-
-
-#### Example based on docker
-
-cd your/directory/ (that directory includes your data folder/file)
-
-if the Example.bam is in the folder'./data', please run the following command. 
-```bash
-sudo docker run -v ./data:/ImmuSeeker_data -it immuseeker -HLA -SwithB -i Example.bam -o Example_output -v hg38 -c 0 -n 0  -p '(1/3,1/3,1/3)' -p1 0.5 -er 0.02 -ex false -pt false -dv dvr -nr HLAn
-
-```
-
-#### Example in local
-This is an example for input a bam file to detect HLA:
+##### This is an example for input a bam file to detect HLA:
 ```bash
 ./ImmuSeeker -HLA -SwithB -i Example.bam -o Example_output -v hg38
 ```
 
-This is an example for input one or two fq file to detect HLA:
+##### This is an example for input one or two fq file to detect HLA:
 ```bash
 ./ImmuSeeker -HLA -SwithF -i Example.fq -er 0.02 -c 0 -o output -ex true -dv dve -pt true
 ```
