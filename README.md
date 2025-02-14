@@ -92,14 +92,14 @@ Options:
 cd /your/data/folder/ (that directory includes your data folder/file)
 ##### Example for updating to the latest IMGT-HLA/KIR version.
 ```bash
-sudo docker run -v /your/data/folder:/ImmuSeeker_data -it immuseeker -KIR -Update
-sudo docker run -v /your/data/folder:/ImmuSeeker_data -it immuseeker -HLA -Update
+sudo docker run -v /your/data/folder:/ImmuSeeker_data -it lxj423/immuseeker -KIR -Update
+sudo docker run -v /your/data/folder:/ImmuSeeker_data -it lxj423/immuseeker -HLA -Update
 ```
 The most recent HLA/KIR reference files will be stored in /your/data/folder for future use.
 
 ##### Next, ensure that your BAM or FASTQ files are stored in /your/data/folder. For example, if Example.bam is located in /your/data/folder, execute the following command:
 ```bash
-sudo docker run -v /your/data/folder:/ImmuSeeker_data -it immuseeker -HLA -SwithB -i Example.bam -o Example_output -v hg38 -c 0 -n 0  -p '(1/3,1/3,1/3)' -p1 0.5 -er 0.02 -ex false -pt false -dv dvr -nr HLAn
+sudo docker run -v /your/data/folder:/ImmuSeeker_data -it lxj423/immuseeker -HLA -SwithB -i Example.bam -o Example_output -v hg38 -c 0 -n 0  -p '(1/3,1/3,1/3)' -p1 0.5 -er 0.02 -ex false -pt false -dv dvr -nr HLAn
 ```
 
 
