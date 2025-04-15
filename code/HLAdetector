@@ -91,7 +91,7 @@ fi
 
 samtools view "$param_o.sam" | grep HLA |cut -d$'\t' -f 1,3 > "$param_o.txt"&&
 rm "$param_o.sam"&&
-cut -d '*' -f 1 "$param_o.txt" | awk '{print $1 "_" $2}' | sort  -T "$directory"  | uniq -c | awk  '{print $2}' | cut -d '_' -f 1  | sort  -T "$directory"  | uniq -c | awk '$1 == 1 {print $2}' > "$param_o.List.txt"&&
+cut -d '*' -f 1 "$param_o.txt" | awk '{print $1 "_" $2}' | sort  -T "$directory"  | uniq -c | awk  '{print $2}' | rev | cut -d '_' -f 2- | rev | sort  -T "$directory"  | uniq -c | awk '$1 == 1 {print $2}' > "$param_o.List.txt"&&
 awk  'NR==FNR{values[$1]; next} $1 in values'  "$param_o.List.txt" "$param_o.txt"> "$param_o.Nuc.txt"&&
 rm "$param_o.List.txt"&&
 Rscript  code/BamTocount_demorun.R -i "$param_o.Nuc.txt" -c "$param_c"&&
