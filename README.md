@@ -1,3 +1,6 @@
+<p style="color:red;"><strong>Reminder:</strong> This is the original version of ImmuSeeker. Please refer to the updated pipeline at <a href="https://github.com/Limin-Jiang/ImmuSeeker.v1.2.0">ImmuSeeker v1.2.0</a>. The updated version incorporates allele coverage information and a greedy strategy for HLA/KIR allele calling. We strongly recommend using the updated version.</p>
+
+
 # ImmuSeeker
 This project encompasses all the code utilized in the paper titled "Deep mining of immune-related gene family signatures through lineage reconstruction"
 
