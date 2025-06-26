@@ -1,8 +1,6 @@
-<p style="color:red;">
-REMINDER: This is the original version of <code>ImmuSeeker</code>. Please refer to the updated pipeline at 
+#REMINDER: This is the original version of <code>ImmuSeeker</code>. Please refer to the updated pipeline at 
 <a href="https://github.com/Limin-Jiang/ImmuSeeker.v1.2.0">ImmuSeeker v1.2.0</a>. The updated version includes allele 
 coverage analysis and a greedy strategy for HLA/KIR allele calling. We strongly recommend using the updated version.
-</p>
 
 
 
